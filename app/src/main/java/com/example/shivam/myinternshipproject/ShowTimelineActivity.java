@@ -23,7 +23,7 @@ import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter;
 import com.twitter.sdk.android.tweetui.TwitterListTimeline;
 import com.twitter.sdk.android.tweetui.UserTimeline;
-
+// Not Required
 public class ShowTimelineActivity extends AppCompatActivity {
     Button button;
     Geocode geocode;
@@ -37,21 +37,7 @@ public class ShowTimelineActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final TwitterSession activeSession = TwitterCore.getInstance()
                 .getSessionManager().getActiveSession();
-        /*final SearchTimeline searchTimeline = new SearchTimeline.Builder()
-                .query("#hiking")
-                .maxItemsPerRequest(50)
-                .build();
-
-        final TweetTimelineRecyclerViewAdapter adapter =
-                new TweetTimelineRecyclerViewAdapter.Builder(this)
-                        .setTimeline(searchTimeline)
-                        .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
-                        .build();
-
-        recyclerView.setAdapter(adapter);
-*/        //final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         geocode = new Geocode(51.5033,-0.1276,30000,Distance.MILES);
-        //TwitterListTimeline
         UserTimeline userTimeline = new UserTimeline.Builder().userId(activeSession.getUserId()).maxItemsPerRequest(20).includeReplies(true).includeRetweets(true).build();
         final SearchTimeline timeline = new SearchTimeline.Builder()
                 .query("#twitter")

@@ -23,9 +23,14 @@
             android:name="io.fabric.ApiKey"
             android:value="718ca423dc659e3e931d1c1cf02969598245e68b" />
 
-        <activity android:name=".Homepage" />
         <activity android:name=".ShowTimelineActivity" />
-        <activity android:name=".AccessTwitterApiActivity"></activity>
+        <activity android:name=".AccessTwitterApiActivity" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".ChooseCategoryActivity" />
+        <activity android:name=".ShowTweetOfDayActivity" />
+        <activity
+            android:name=".MajorActivity"
+            android:label="@string/title_activity_major"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.shivam.myinternshipproject.ChooseCategoryActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="NEWS"
+        android:id="@+id/category_news"
+        android:layout_weight="1"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/category_sports"
+        android:text="SPORTS"
+        android:layout_weight="1"/>
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+        android:text="EDUCATION"
+        android:id="@+id/category_education"
+    android:layout_weight="1"/>
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+        android:text="SCIENCE"
+        android:id="@+id/category_science"
+    android:layout_weight="1"/>
+</LinearLayout>

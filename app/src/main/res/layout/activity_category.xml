@@ -2,25 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.example.shivam.myinternshipproject.Homepage">
-
-    <LinearLayout
+    android:orientation="vertical"
+    tools:context="com.example.shivam.myinternshipproject.CategoryActivity">
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="5"
 
-        android:id="@+id/my_tweet_layout"></LinearLayout>
+        android:id="@+id/recycler_view_friends"></android.support.v7.widget.RecyclerView>
 <Button
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1"
-    android:text="NEXT"
-    android:layout_marginBottom="20dp"
-    android:id="@+id/next_btn"
-    android:background="@android:color/holo_blue_light"
-
-    />
+    android:text="SUBMIT"
+    android:id="@+id/submit_btn_selecting_handles"
+    android:layout_weight="1"/>
 </LinearLayout>
