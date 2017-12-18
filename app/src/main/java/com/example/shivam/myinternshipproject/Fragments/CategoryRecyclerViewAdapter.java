@@ -66,7 +66,6 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
             public void onClick(View view) {
                 if (holder.mItem.isActive_category()){
                     holder.mItem.setActive_category(false);
-                    Log.e("My Tag Again: ",String.valueOf(holder.mItem.isActive_category()));
                    categoryObjectList.get(position).setActive_category(false);
                    categoryDataAcessObject.setCategoryObjectList(categoryObjectList);
                    tinyDB.putObject(StaticKeys.MY_CATEGORY_DATA_OBJECT_KEY,categoryDataAcessObject);
@@ -76,8 +75,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
                     categoryObjectList.get(position).setActive_category(true);
                     categoryDataAcessObject.setCategoryObjectList(categoryObjectList);
                     tinyDB.putObject(StaticKeys.MY_CATEGORY_DATA_OBJECT_KEY,categoryDataAcessObject);
-                    Log.e("My Tag Again: ",String.valueOf(holder.mItem.isActive_category()));
-                }
+                    }
             }
         });
         holder.mContentView.setOnClickListener(new View.OnClickListener() {

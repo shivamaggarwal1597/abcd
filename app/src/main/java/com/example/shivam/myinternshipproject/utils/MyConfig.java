@@ -11,8 +11,26 @@ public class MyConfig {
     public int no_of_tweets_selected = 4;
     public int no_of_notifications = 4;
     public String name_of_user = "";
+    public boolean set_catogaries = false;
+    public boolean set_handles = false;
     public int user_login_count=0;
     public long id_of_user = 0l;
+
+    public boolean isSet_catogaries() {
+        return set_catogaries;
+    }
+
+    public void setSet_catogaries(boolean set_catogaries) {
+        this.set_catogaries = set_catogaries;
+    }
+
+    public boolean isSet_handles() {
+        return set_handles;
+    }
+
+    public void setSet_handles(boolean set_handles) {
+        this.set_handles = set_handles;
+    }
 
     public MyConfig(boolean isLoggedIn, int no_of_tweets_selected, int no_of_notifications, String name_of_user, long id_of_user) {
         this.isLoggedIn = isLoggedIn;

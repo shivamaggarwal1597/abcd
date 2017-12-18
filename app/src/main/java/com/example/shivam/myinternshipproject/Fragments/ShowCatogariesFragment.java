@@ -33,6 +33,7 @@ public class ShowCatogariesFragment extends Fragment {
     private int mColumnCount = 1;
     CategoryDataAcessObject categoryDataAcessObject;
     TinyDB tinyDB;
+    MyConfig config;
     List<CategoryObject> categoryObjectList;
     private OnListFragmentInteractionListener mListener;
 
@@ -55,7 +56,8 @@ public class ShowCatogariesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         categoryObjectList = new ArrayList<>();
         //When user logins the first time, no category is selected
-        if (tinyDB.getObject(StaticKeys.MY_CONFIG_KEY, MyConfig.class).getUser_login_count()==1){
+        config = tinyDB.getObject(StaticKeys.MY_CONFIG_KEY, MyConfig.class);
+        if (!config.isSet_catogaries()){
             categoryObjectList.add(new CategoryObject("news"));
             categoryObjectList.add(new CategoryObject("education"));
             categoryObjectList.add(new CategoryObject("science"));
@@ -63,6 +65,8 @@ public class ShowCatogariesFragment extends Fragment {
             categoryObjectList.add(new CategoryObject("politics"));
             categoryDataAcessObject = new CategoryDataAcessObject();
             categoryDataAcessObject.setCategoryObjectList(categoryObjectList);
+            config.setSet_catogaries(true);
+            tinyDB.putObject(StaticKeys.MY_CONFIG_KEY,config);
             tinyDB.putObject("category_data_access_object",categoryDataAcessObject);
         }
         else {
@@ -74,10 +78,10 @@ public class ShowCatogariesFragment extends Fragment {
             RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                Log.e("My","First");
+                //Log.e("My","First");
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-                Log.e("My","Second");
+                //Log.e("My","Second");
             }
 
 

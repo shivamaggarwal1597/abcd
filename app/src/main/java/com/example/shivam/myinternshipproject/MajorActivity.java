@@ -5,18 +5,23 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shivam.myinternshipproject.Fragments.ShowCatogariesFragment;
 import com.example.shivam.myinternshipproject.Fragments.ShowingHandlesListFragment;
+import com.example.shivam.myinternshipproject.Fragments.TweetShowFragment;
 import com.example.shivam.myinternshipproject.utils.CategoryObject;
 import com.example.shivam.myinternshipproject.utils.MyConfig;
 import com.example.shivam.myinternshipproject.utils.TinyDB;
 import com.example.shivam.myinternshipproject.utils.TwitterFriends;
+import com.twitter.sdk.android.core.models.Tweet;
 
-public class MajorActivity extends AppCompatActivity implements ShowCatogariesFragment.OnListFragmentInteractionListener,ShowingHandlesListFragment.HandlesFragmentInteractionListener{
+public class MajorActivity extends AppCompatActivity implements
+        ShowCatogariesFragment.OnListFragmentInteractionListener,
+        ShowingHandlesListFragment.HandlesFragmentInteractionListener,TweetShowFragment.OnListFragmentInteractionListener{
 
     private TextView mTextMessage;
     TinyDB tinyDB;
@@ -42,8 +47,11 @@ public class MajorActivity extends AppCompatActivity implements ShowCatogariesFr
                     fragmentTransaction1.commit();
                     return true;
                 case R.id.navigation_notifications:
-                    //This is my Tweets Showing Page
-              //      mTextMessage.setText(R.string.title_notifications);
+                    //this shows the tweets
+                    TweetShowFragment tweetShowFragment = new TweetShowFragment();
+                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.frame,tweetShowFragment,"TWEETS");
+                    fragmentTransaction2.commit();
                     return true;
             }
             return false;
@@ -68,10 +76,16 @@ public class MajorActivity extends AppCompatActivity implements ShowCatogariesFr
     @Override
     public void onListFragmentInteraction(CategoryObject item) {
         Toast.makeText(MajorActivity.this,item.getCategory_name(),Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     public void onListFragmentInteraction(TwitterFriends item) {
         Toast.makeText(MajorActivity.this,item.getName(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onListFragmentInteraction(Tweet item) {
+        Log.e("FavCount of this tweet",item.favoriteCount+" ");
     }
 }
