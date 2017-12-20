@@ -37,10 +37,13 @@ public class MajorActivity extends AppCompatActivity implements
                     ShowCatogariesFragment showCatogariesFragment = new ShowCatogariesFragment();
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frame,showCatogariesFragment,"Catogaries");
+                    mTextMessage.setText("CATOGARIES");
                     fragmentTransaction.commit();
+
                     return true;
                 case R.id.navigation_dashboard:
                     //This is my Handles SHowing page
+                    mTextMessage.setText("HANDLES");
                     ShowingHandlesListFragment showingHandlesListFragment=new ShowingHandlesListFragment();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction1.replace(R.id.frame,showingHandlesListFragment,"Handles");
@@ -48,6 +51,7 @@ public class MajorActivity extends AppCompatActivity implements
                     return true;
                 case R.id.navigation_notifications:
                     //this shows the tweets
+                    mTextMessage.setText("TWEETS");
                     TweetShowFragment tweetShowFragment = new TweetShowFragment();
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.frame,tweetShowFragment,"TWEETS");
@@ -64,6 +68,8 @@ public class MajorActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_major);
         tinyDB = new TinyDB(MajorActivity.this);
         myConfig = tinyDB.getObject("my_config_object",MyConfig.class);
+        mTextMessage = (TextView)findViewById(R.id.heading_text);
+        mTextMessage.setText("CATOGARIRES");
         Toast.makeText(MajorActivity.this,"Welcome "+myConfig.getName_of_user(),Toast.LENGTH_SHORT).show();
         ShowCatogariesFragment showCatogariesFragment = new ShowCatogariesFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -81,7 +87,7 @@ public class MajorActivity extends AppCompatActivity implements
 
     @Override
     public void onListFragmentInteraction(TwitterFriends item) {
-        Toast.makeText(MajorActivity.this,item.getName(),Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(MajorActivity.this,item.getName(),Toast.LENGTH_SHORT).show();
     }
 
     @Override

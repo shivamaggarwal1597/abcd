@@ -37,8 +37,6 @@ public class HandlesRecyclerViewAdapter extends RecyclerView.Adapter<HandlesRecy
         mValues = items;
         mListener = listener;
         this.context = context;
-        all_handles_list = new ArrayList<>();
-        active_list=new ArrayList<>();
         tinyDB = new TinyDB(context);
         }
     @Override
@@ -48,6 +46,7 @@ public class HandlesRecyclerViewAdapter extends RecyclerView.Adapter<HandlesRecy
         //databaseObject= tinyDB.getObject(StaticKeys.MY_DATABASE_OBJECT_KEY,DatabaseObject.class);
         databaseObject= tinyDB.getObject(StaticKeys.MY_DATABASE_OBJECT_KEY,DatabaseObject.class);
         active_list = databaseObject.getActive_list();
+        all_handles_list = databaseObject.getAll_handles_list();
 
         return new ViewHolder(view);
     }
@@ -56,22 +55,31 @@ public class HandlesRecyclerViewAdapter extends RecyclerView.Adapter<HandlesRecy
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
         Picasso.with(context).load(mValues.get(position).getProfilePictureUrl()).into(holder.imageView);
+        databaseObject= tinyDB.getObject(StaticKeys.MY_DATABASE_OBJECT_KEY,DatabaseObject.class);
+        active_list = databaseObject.getActive_list();
+        all_handles_list = databaseObject.getAll_handles_list();
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
                     tw =  mValues.get(position);
-                 if (!active_list.contains(tw)){
+
+
+                    if (!active_list.contains(tw)){
                      active_list.add(tw);
                      databaseObject.setActive_list(active_list);
-                     Log.e("Showing List : ",String.valueOf(active_list.size()));
+                     for (TwitterFriends tff: active_list){
+                         Log.e("Showing List : ",String.valueOf(tff.getName()));
+                     }
                      tinyDB.putObject(StaticKeys.MY_DATABASE_OBJECT_KEY,databaseObject);
                  }
                  else {
                      active_list.remove(tw);
                      databaseObject.setActive_list(active_list);
                      tinyDB.putObject(StaticKeys.MY_DATABASE_OBJECT_KEY,databaseObject);
-                     Toast.makeText(context,"Removed from list",Toast.LENGTH_SHORT).show();
+                     for (TwitterFriends tff: active_list){
+                         Log.e("Showing List : ",String.valueOf(tff.getName()));
+                     }
                  }
                     mListener.onListFragmentInteraction(holder.mItem);
                 }

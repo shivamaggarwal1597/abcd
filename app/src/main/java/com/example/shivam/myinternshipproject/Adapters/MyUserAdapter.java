@@ -50,14 +50,16 @@ public class MyUserAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
 
     @Override
     public void onBindViewHolder(final FriendsViewHolder holder, final int position) {
-holder.name_text.setText(friendModels.get(position).getName());
-holder.name_text.setOnClickListener(new View.OnClickListener() {
+      holder.name_text.setText(friendModels.get(position).getName());
+      holder.name_text.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-    myList.add(friendModels.get(position).getName());
-        for (String tf : myList){
+      myList.add(friendModels.get(position).getName());
+
+      for (String tf : myList)
+      {
             Log.e("My Tag For Check : ", tf);
-        }
+      }
 
         Set<String> set = new HashSet<String>();
         set.add(friendModels.get(position).getName());
